@@ -13,7 +13,6 @@ export default function Hero() {
     if (!video) return;
 
     let ctx = gsap.context(() => {
-      // Modern staggered smooth entrance animation for text elements
       const elements = textContainerRef.current.children;
       gsap.set(elements, { y: 40, opacity: 0 });
 
@@ -49,12 +48,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="w-full bg-black flex justify-center">
+    <div className="w-full bg-black flex justify-center py-8 lg:py-0">
       <div 
         ref={containerRef} 
-        className="relative w-full max-w-[1400px] h-[550px] bg-black overflow-hidden flex items-center justify-between px-6 lg:px-12"
+        className="relative w-full max-w-[1400px] min-h-[550px] bg-black overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 gap-8 lg:gap-0"
       >
-        {/* Left Side Text Column with Modern Redesigned Look */}
+        {/* Left Side Text Column (Appears on top in mobile, left side on desktop) */}
         <div 
           ref={textContainerRef} 
           className="relative w-full lg:w-[45%] space-y-6 z-25 pointer-events-auto"
@@ -95,8 +94,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Side Video Column */}
-        <div className="absolute right-0 top-0 w-full lg:w-[55%] h-full z-10 flex items-center justify-end pr-0 pointer-events-none">
+        {/* Right Side Video Column (Appears below text on mobile, right side on desktop) */}
+        <div className="relative lg:absolute right-0 top-0 w-full lg:w-[55%] h-[350px] lg:h-full z-10 flex items-center justify-center lg:justify-end pr-0 pointer-events-none">
           <video 
             ref={videoRef}
             src="/guitar-story.mp4" 
